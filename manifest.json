@@ -3,8 +3,6 @@
     "name": "AI-Free Search",
     "version": "1.0",
     "description": "Google検索の AI要約とAIモードタブを非表示にします。",
-    "permissions": ["scripting"],
-    "host_permissions": ["https://www.google.com/*"],
     "content_scripts": [
       {
         "matches": ["https://www.google.com/search*"],
