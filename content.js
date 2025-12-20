@@ -3,8 +3,8 @@
       const targetAbstract = document.querySelector('.YzCcne');
       const targetTab = document.querySelector('.olrp5b');
       if (targetAbstract || targetTab) {
-        targetAbstract.style.display = 'none';
-        targetTab.style.display = 'none';
+        if(targetAbstract) targetAbstract.style.display = 'none';
+        if(targetTab) targetTab.style.display = 'none';
   
         window.isAIFreeDisplayed = true;
       }
