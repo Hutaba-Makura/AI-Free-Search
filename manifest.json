@@ -1,7 +1,7 @@
 {
     "manifest_version": 3,
     "name": "NO AI Search",
-    "version": "1.0",
+    "version": "1.1",
     "description": "Google検索の AI要約とAIモードタブを非表示にします。",
     "content_scripts": [
       {
