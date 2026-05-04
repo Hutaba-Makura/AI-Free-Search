@@ -4,7 +4,7 @@ declare global {
   }
 }
 
-function replaceElement() {
+export function hideAbstOnSearch() {
   const targetAbstract = document.querySelector('.YzCcne');
   const targetTab = document.querySelector('.olrp5b');
   if (targetAbstract || targetTab) {
@@ -18,13 +18,5 @@ function replaceElement() {
     }
 
     window.isAIFreeDisplayed = true;
-  }
-}
-
-export function checkAndReplaceElement() {
-  for (let i = 0; i < 5; i++) {
-    setTimeout(() => {
-      replaceElement();
-    }, 50 * (i + 1));
   }
 }
