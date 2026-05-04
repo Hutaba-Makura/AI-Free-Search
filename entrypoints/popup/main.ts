@@ -36,16 +36,16 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
   </div>
 `;
 
-const toggle = document.querySelector('sl-switch');
-if (toggle) {
+const searchToggle = document.querySelector('sl-switch');
+if (searchToggle) {
   const applyValue = (value: boolean) => {
-    toggle.checked = value;
+    searchToggle.checked = value;
   };
 
   hideAbstEnabled.getValue().then(applyValue);
   hideAbstEnabled.watch(applyValue);
 
-  toggle.addEventListener('sl-change', async () => {
-    await hideAbstEnabled.setValue(toggle.checked);
+  searchToggle.addEventListener('sl-change', async () => {
+    await hideAbstEnabled.setValue(searchToggle.checked);
   });
 }
