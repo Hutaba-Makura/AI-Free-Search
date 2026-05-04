@@ -17,4 +17,4 @@ function checkAndReplaceElement() {
   }
 }
 
-export default { replaceElement, checkAndReplaceElement };
+export default { checkAndReplaceElement };

@@ -1,4 +1,4 @@
-import { replaceElement, checkAndReplaceElement } from '../components/replacement';
+import checkAndReplaceElement from '../components/replacement';
 
 export default defineContentScript({
   matches: ['*://*.google.com/*'],
