@@ -7,10 +7,10 @@ export default defineConfig({
     version: "1.2",
     description: "Google検索の AI要約とAIモードタブを非表示にします。",
     icons: {
-      "16": "icons/icon16.png",
-      "32": "icons/icon32.png",
-      "48": "icons/icon48.png",
-      "128": "icons/icon128.png"
+      "16": "icon/icon16.png",
+      "32": "icon/icon32.png",
+      "48": "icon/icon48.png",
+      "128": "icon/icon128.png"
     }
   },
 });

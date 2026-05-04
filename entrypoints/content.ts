@@ -1,7 +1,8 @@
-import checkAndReplaceElement from '../components/replacement';
+import { checkAndReplaceElement } from "#imports";
 
 export default defineContentScript({
   matches: ['*://*.google.com/*'],
+  runAt: 'document_start',
   main() {
     // ページが読み込まれたら実行
     if (!window.isAIFreeDisplayed) {
