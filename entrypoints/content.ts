@@ -1,29 +1,16 @@
-import { hideAbstOnSearch } from "#imports";
+import { hideAbst } from "#imports";
 
 export default defineContentScript({
   matches: ['*://*.google.com/*'],
   runAt: 'document_start',
-  main(ctx) {
+  main() {
     // ページが読み込まれたら実行
     window.isAIFreeDisplayed = false;
-    hideAbstOnSearch();
+    hideAbst();
 
-    // 2. 監視の開始
-    const observer = new MutationObserver(() => {
-      hideAbstOnSearch();
-      if (window.isAIFreeDisplayed) {
-        observer.disconnect();
-      }
-    });
-    // body要素が作られたら、その中身の変化を監視する
-    observer.observe(document.documentElement, {
-      childList: true,
-      subtree: true,
-    });
-    // 3. クリーンアップ
-    // 拡張機能がリロードされたり無効になったりしたときに、監視を止める
-    ctx.onInvalidated(() => {
-      observer.disconnect();
+    // "document_end"のタイミングでも実行
+    document.addEventListener('DOMContentLoaded', () => {
+      hideAbst();
     });
   }
 });

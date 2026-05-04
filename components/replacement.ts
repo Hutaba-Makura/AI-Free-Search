@@ -4,7 +4,7 @@ declare global {
   }
 }
 
-export function hideAbstOnSearch() {
+export function OnSearch() {
   const targetAbstract = document.querySelector('.YzCcne');
   const targetTab = document.querySelector('.olrp5b');
   if (targetAbstract || targetTab) {
@@ -18,5 +18,13 @@ export function hideAbstOnSearch() {
     }
 
     window.isAIFreeDisplayed = true;
+  }
+}
+
+export function hideAbst() {
+  for (let i = 0; i < 5; i++) {
+    setTimeout(() => {
+      OnSearch();
+    }, 50 * (i + 1));
   }
 }
