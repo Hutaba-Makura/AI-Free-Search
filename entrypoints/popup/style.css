@@ -1,6 +1,6 @@
 body {
   margin: 0%;
-  min-width: 150px;
+  min-width: 250px;
   min-height: 100px;
 }
 
@@ -27,4 +27,19 @@ body {
   align-items: center;
   gap: 8px;
   padding: 0 10px 10px;
+}
+
+.search-title {
+  font-size: 1.6em;
+  white-space: nowrap;
+}
+
+.search-icon {
+  font-size: 28px;
+}
+
+.search-switch {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
 }

@@ -1,16 +1,31 @@
-import { hideAbst } from "#imports";
+import { hideAbst, storage } from "#imports";
+
+const hideAbstEnabled = storage.defineItem<boolean>('local:hideAbstEnabled', {
+  defaultValue: true,
+});
 
 export default defineContentScript({
   matches: ['*://*.google.com/*'],
   runAt: 'document_start',
-  main() {
+  async main(ctx) {
+    let enabled = await hideAbstEnabled.getValue();
+
+    const runHide = () => {
+      if (!enabled) return;
+      window.isAIFreeDisplayed = false;
+      hideAbst();
+    };
+
     // ページが読み込まれたら実行
-    window.isAIFreeDisplayed = false;
-    hideAbst();
+    runHide();
 
     // "document_end"のタイミングでも実行
-    document.addEventListener('DOMContentLoaded', () => {
-      hideAbst();
+    document.addEventListener('DOMContentLoaded', runHide);
+
+    const unwatch = hideAbstEnabled.watch((value) => {
+      enabled = value;
+      if (enabled) runHide();
     });
+    ctx.onInvalidated(unwatch);
   }
 });

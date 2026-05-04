@@ -4,6 +4,11 @@ import '@shoelace-style/shoelace/dist/components/icon/icon.js';
 import '@shoelace-style/shoelace/dist/components/switch/switch.js';
 import { setBasePath } from '@shoelace-style/shoelace/dist/utilities/base-path.js';
 import { registerIconLibrary } from '@shoelace-style/shoelace/dist/utilities/icon-library.js';
+import { storage } from '#imports';
+
+const hideAbstEnabled = storage.defineItem<boolean>('local:hideAbstEnabled', {
+  defaultValue: true,
+});
 
 setBasePath(chrome.runtime.getURL(''));
 registerIconLibrary('bootstrap', {
@@ -19,9 +24,28 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
     </div>
     <div class="content">
       <div class="search">
-        <sl-icon name="camera2" library="bootstrap"></sl-icon>
-        <sl-switch checked>Checked</sl-switch>
+        <div class="search-icon">
+          <sl-icon name="google" library="bootstrap"></sl-icon>
+        </div>
+        <div class="search-title">Google Search</div>
+        <div class="search-switch">
+          <sl-switch></sl-switch>
+        </div>
       </div>
     </div>
   </div>
 `;
+
+const toggle = document.querySelector('sl-switch');
+if (toggle) {
+  const applyValue = (value: boolean) => {
+    toggle.checked = value;
+  };
+
+  hideAbstEnabled.getValue().then(applyValue);
+  hideAbstEnabled.watch(applyValue);
+
+  toggle.addEventListener('sl-change', async () => {
+    await hideAbstEnabled.setValue(toggle.checked);
+  });
+}
