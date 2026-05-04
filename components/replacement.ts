@@ -5,6 +5,7 @@ declare global {
 }
 
 export function OnSearch() {
+  if (window.isAIFreeDisplayed) return;
   const targetAbstract = document.querySelector('.YzCcne');
   const targetTab = document.querySelector('.olrp5b');
   if (targetAbstract || targetTab) {

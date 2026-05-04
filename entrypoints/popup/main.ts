@@ -1,24 +1,27 @@
 import './style.css';
-import typescriptLogo from '@/assets/typescript.svg';
-import wxtLogo from '/wxt.svg';
-import { setupCounter } from '@/components/counter';
+import '@shoelace-style/shoelace/dist/themes/light.css';
+import '@shoelace-style/shoelace/dist/components/icon/icon.js';
+import '@shoelace-style/shoelace/dist/components/switch/switch.js';
+import { setBasePath } from '@shoelace-style/shoelace/dist/utilities/base-path.js';
+import { registerIconLibrary } from '@shoelace-style/shoelace/dist/utilities/icon-library.js';
+
+setBasePath(chrome.runtime.getURL(''));
+registerIconLibrary('bootstrap', {
+  resolver: (name) => `https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/icons/${name}.svg`,
+  mutator: (svg) => svg.setAttribute('fill', 'currentColor'),
+});
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
   <div>
-    <a href="https://wxt.dev" target="_blank">
-      <img src="${wxtLogo}" class="logo" alt="WXT logo" />
-    </a>
-    <a href="https://www.typescriptlang.org/" target="_blank">
-      <img src="${typescriptLogo}" class="logo vanilla" alt="TypeScript logo" />
-    </a>
-    <h1>WXT + TypeScript</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
+    <div class="title">
+      <img src="icon/icon32.png" alt="No AI Search Icon" class="icon">
+      <span class="title-text">NO AI Search</span>
     </div>
-    <p class="read-the-docs">
-      Click on the WXT and TypeScript logos to learn more
-    </p>
+    <div class="content">
+      <div class="search">
+        <sl-icon name="camera2" library="bootstrap"></sl-icon>
+        <sl-switch checked>Checked</sl-switch>
+      </div>
+    </div>
   </div>
 `;
-
-setupCounter(document.querySelector<HTMLButtonElement>('#counter')!);

@@ -17,5 +17,9 @@
   "devDependencies": {
     "typescript": "^5.9.3",
     "wxt": "^0.20.25"
+  },
+  "dependencies": {
+    "@shoelace-style/shoelace": "^2.20.1",
+    "@types/chrome": "^0.1.40"
   }
 }
